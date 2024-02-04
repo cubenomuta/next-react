@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import styles from "./Main.module.css";
 import { Links } from "../Links/Links";
 import { Headline } from "../Headline/Headline";
+import { useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,6 +12,17 @@ type props = {
 
 export function Main(props: props) {
     console.log(props.page);
+
+    useEffect(() => {
+        console.log("マウント時");
+        document.body.style.backgroundColor = "red";
+    
+        return () => {
+            console.log('アンマウント時')
+          document.body.style.backgroundColor = "";
+        };
+      }, []);
+
     return (
         <>
         <main className={`${styles.main} ${inter.className}`}>

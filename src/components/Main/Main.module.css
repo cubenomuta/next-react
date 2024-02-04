@@ -11,3 +11,17 @@
   font-weight: 700;
   font-family: var(--font-mono);
 }
+
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.countButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}

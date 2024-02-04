@@ -1,23 +1,12 @@
 import Image from "next/image";
 import styles from "./Headline.module.css";
-import Link from "next/link";
-import { useCallback } from "react";
 
 type Props = {
     page: string;
-    onClick: (message?: any) => void;
     children: React.ReactNode;
 }
 
-export function Headline({ page, onClick, children }: Props) {
-    const foo: number = 1;
-
-    const handleClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, foo: number) => {
-        // e.currentTargetはここでは使えませんが、ログに何かを出力したい場合は別の方法を考える必要があります。
-        e.preventDefault();
-        alert(foo);
-        // onClick(); // onClick プロパティを呼び出す
-    }, []); // 依存配列にonClickを加えます
+export function Headline({ page, children }: Props) {
 
     return (
         <>
@@ -43,11 +32,6 @@ export function Headline({ page, onClick, children }: Props) {
                         />
                     </a>
                 </div>
-                <Link 
-                    href="/about"
-                    onClick={(e) => handleClick(e, foo)}>
-                    Button
-                </Link>
             </div>
         </>
     );

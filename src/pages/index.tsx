@@ -10,7 +10,8 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const [foo, setFoo] = useState<number>(0);
   const [text, setText] = useState<string>("");
-  const [isShow, setIsShow] = useState(true);
+  const [isShow, setIsShow] = useState<boolean>(true);
+  const [array, setArray] = useState<string[]>([]);
 
   const handleClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
     //このfooは毎回初期の値が保存される
@@ -25,6 +26,11 @@ export default function Home() {
   const handleDisplay = () => {
       setIsShow(prev => !prev);
   }
+
+  const handleAddArray = useCallback((e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    text!=="" ? setArray(prev => [...prev, text]) : null;
+    setText("");
+  }, [text]);
 
   useEffect(() => {
       //マウント時の処理
@@ -49,12 +55,25 @@ export default function Home() {
                 onChange={e =>{
                   setText(e.currentTarget.value)
                 }}/>
+        <button
+          onClick={handleAddArray}>
+          追加
+        </button>
         <button 
           onClick={handleDisplay}
         >
             {isShow ? "非表示" : "表示"}
         </button>
       </div>
+      <ul className={styles.arrayDisplay}>
+        {array.map((v, i) => {
+          return (
+            <li key={`${i}-${v}`}>
+              {v}
+            </li>
+          )
+        })}
+      </ul>
       <Main page="index" 
             foo={ foo } 
             handleClick={ handleClick }

@@ -15,9 +15,9 @@ export function Main(props: props) {
         <>
         <main className={`${styles.main} ${inter.className}`}>
             <Headline
-            page={props.page}
-            // allow関数で書かないとエラーが起こる
-            onClick={() => alert('しっかり休みましょう。')} 
+                page={props.page}
+                // allow関数で書かないとエラーが起こる
+                onClick={() => alert('しっかり休みましょう。')} 
             >
             <code className={styles.code}>src/{props.page}/{props.page}.tsx</code>
             </Headline>
